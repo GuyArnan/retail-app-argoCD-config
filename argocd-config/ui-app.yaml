@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: retail-store-ui # Unique name for this ArgoCD Application
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io # Best practice to ensure resources are cleaned up
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GuyArnan/retail-app-argoCD-config # ⬅️ Your Git repository URL
+    targetRevision: HEAD # Use 'HEAD' for the latest commit on the main branch (or a specific branch/tag)
+    path: charts/ui # ⬅️ Relative path to your Helm Chart within the repo
+    helm:
+      valueFiles:
+        - values.yaml # Uses the default values file in the Helm chart
+  destination:
+    server: https://kubernetes.default.svc # Deploys to the same cluster ArgoCD is running on
+    namespace: retail-store-prod # ⬅️ The target namespace for your service
+  syncPolicy:
+    automated:
+      prune: true # Allows ArgoCD to delete resources that no longer exist in Git
+      selfHeal: true # Automatically syncs if the live state drifts from the Git state
+    syncOptions:
+      - CreateNamespace=true # ArgoCD will create the destination namespace if it doesn't exist

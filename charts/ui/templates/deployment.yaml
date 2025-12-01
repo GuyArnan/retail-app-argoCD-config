@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-ui
+  labels:
+    app: {{ .Release.Name }}-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-ui
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-ui
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: ui
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+#          livenessProbe:
+#            httpGet:
+#              path: {{ .Values.healthCheckPath }}
+#              port: {{ .Values.service.port }}
+#            initialDelaySeconds: 15
+#            periodSeconds: 20
+#          readinessProbe:
+#            httpGet:
+#              path: {{ .Values.healthCheckPath }}
+#              port: {{ .Values.service.port }}
+#            initialDelaySeconds: 5
+#            periodSeconds: 10

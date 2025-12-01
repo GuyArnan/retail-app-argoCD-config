@@ -1,0 +1,35 @@
+# Default values for orders.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+image:
+  repository: "630019796862.dkr.ecr.us-west-2.amazonaws.com/retail-store-orders"
+  pullPolicy: Always
+  tag: "39454b2d7fea654d6ed6d55e36ef164f5a4302f3" #sorry for hardcoding
+imagePullSecrets:
+  - name: regcred
+
+service:
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
+
+# healthCheckPath: /health
+#
+#readinessProbe:
+#  initialDelaySeconds: 30
+#  periodSeconds: 10
+#  timeoutSeconds: 5
+#
+#livenessProbe:
+#  initialDelaySeconds: 30
+#  periodSeconds: 20
+#  timeoutSeconds: 5
