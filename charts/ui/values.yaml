@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+nodeSelector:
+  kubernetes.io/hostname: "kubeadm-worker"
 image:
   repository: "630019796862.dkr.ecr.us-west-2.amazonaws.com/retail-store-ui"
   pullPolicy: Always
