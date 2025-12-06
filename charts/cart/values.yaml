@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   repository: "630019796862.dkr.ecr.us-west-2.amazonaws.com/retail-store-cart"
   pullPolicy: Always
-  tag: "f1f6528a0213d06a2e1c1bf33844d84e31ef8ce0"
+  tag: "b749db846043ce94d0af2ab14bb40414588c50c5"
 imagePullSecrets:
   - name: regcred
 nameOverride: ""
