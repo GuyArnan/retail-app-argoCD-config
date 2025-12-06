@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: retail-store-catalog
+  name: retail-store-checkout
   namespace: argocd # All ArgoCD Application definitions should live in the argocd namespace
 spec:
   project: default
   source:
     repoURL: https://github.com/GuyArnan/retail-app-argoCD-config # Your GitOps repo
     targetRevision: HEAD
-    path: charts/checkout #Path to the Catalog service Helm chart
+    path: charts/checkout
   destination:
     server: https://kubernetes.default.svc
     namespace: retail-store-prod # Deploy to your production namespace
