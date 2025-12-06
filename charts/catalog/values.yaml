@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   repository: "630019796862.dkr.ecr.us-west-2.amazonaws.com/retail-store-catalog" #doesnt work unless hard-coded
   pullPolicy: Always
-  tag: "b749db846043ce94d0af2ab14bb40414588c50c5" #until this is injected
+  tag: "4f5a4d90f60dfe2e652dd38236111c0334a0c105" #until this is injected
 imagePullSecrets:
   - name: regcred
 nameOverride: ""
