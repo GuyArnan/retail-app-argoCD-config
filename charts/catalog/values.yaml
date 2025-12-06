@@ -44,7 +44,8 @@ autoscaling:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/hostname: "kubeadm-worker"
 tolerations: []
 affinity: {}
 topologySpreadConstraints: []
