@@ -8,7 +8,7 @@ nodeSelector:
 image:
   repository: "630019796862.dkr.ecr.us-west-2.amazonaws.com/retail-store-ui"
   pullPolicy: Always
-  tag: "99dc32d3ccccdc4b305d55029a4090af6cb61d7e" #sorry for hardcoding
+  tag: "ec0e98bcfaba41481ee33a5f493c29fefddbf15f" #sorry for hardcoding
 imagePullSecrets:
   - name: regcred
 service:
